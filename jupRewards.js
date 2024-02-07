@@ -22,7 +22,7 @@ const quantityToSwap = async (connection, tokenAccount, mintAddress) => {
   const totalSupply = await getSupply(connection, mintAddress);
 
   const min = 0.001;
-  const max = 0.005;
+  const max = 0.003;
 
   console.log("balance: ", balance);
   console.log("totalSupply: ", totalSupply);
