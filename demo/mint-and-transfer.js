@@ -105,3 +105,5 @@ console.log(
   'Tokens minted and transferred:',
   `https://solana.fm/tx/${transferCheckedWithFeeSig}?cluster=devnet-solana`
 );
+
+

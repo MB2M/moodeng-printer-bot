@@ -40,9 +40,10 @@ console.log(
 );
 
 // authority that can mint new tokens
-const mintAuthority = Keypair.generate();
-console.log('Mint Authority address:', mintAuthority.publicKey.toBase58());
-await addKeypairToEnvFile(mintAuthority, 'MINT_AUTHORITY');
+// const mintAuthority = Keypair.generate();
+// console.log('Mint Authority address:', mintAuthority.publicKey.toBase58());
+// await addKeypairToEnvFile(mintAuthority, 'MINT_AUTHORITY');
+const mintAuthority = payer
 
 // mint account, tokens come from here
 const mintKeypair = Keypair.generate();
