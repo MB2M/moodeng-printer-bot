@@ -24,6 +24,10 @@ export const collectFees = async (
       `Collecting ${accountsToWithdrawFrom.reduce((acc, account) => acc + account.withheldAmount, BigInt(0))} fees from ${accountsToWithdrawFrom.length} accounts`,
     );
 
+    const accToWithdraw = accountsToWithdrawFrom
+      .map((acc) => acc.tokenAccountAddress)
+      .slice(0, 30);
+
     // WITHDRAW WITHHELD TOKENS
     const withdrawTokensSig = await withdrawWithheldTokensFromAccounts(
       connection, // connection to use
@@ -32,7 +36,7 @@ export const collectFees = async (
       to.address, // the destination account
       authority, // the withdraw withheld token authority
       [], // signing accounts
-      accountsToWithdrawFrom.map((acc) => acc.tokenAccountAddress), // source accounts from which to withdraw withheld fees
+      accToWithdraw, // source accounts from which to withdraw withheld fees
       undefined, // options for confirming the transaction
       TOKEN_2022_PROGRAM_ID, // SPL token program id
     );
