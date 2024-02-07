@@ -36,10 +36,10 @@ const quantityToSwap = async (connection, tokenAccount, mintAddress) => {
 const main = async () => {
   await client.connect();
 
-  const mintAddress = "9NaE63KazJi47JLmNf5FoPoS1vnGY9v9PyEhYgiWYNHk";
-  const poolAddress = "54dvfFcreZzVz8Wv6ZDx1b91vK1iQVFHzkGCBbgdguxX";
+  const mintAddress = "88y9TubbeK6faabYWqf4RxSnRcmhXNYgAA8LnDoKgpUG";
+  const poolAddress = "Enrfx2t4aFwUod4hv5eh9LNXbotQLo1FiKhbxN9Uhv4P";
   const rewardAddress = "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN";
-  const teamAddress = "DWRUcyrkSYXsfngnTTeZGCBzWj96U3UMs19P6DH2rae5";
+  const teamAddress = "8esYo5EmeLgbn1RNkwH12CYSRc6tyBhNPKNiSBdg6Y9P";
 
   const jupRewards = Keypair.fromSecretKey(
     new Uint8Array(JSON.parse(process.env.JUPREWARDS)),
@@ -126,7 +126,7 @@ const main = async () => {
       console.error(err);
     }
     // });
-  }, 90000);
+  }, 600000);
   cron.schedule("*/10 * * * *", async () => {
     try {
       const quantityToTransfer = await getBalance(
