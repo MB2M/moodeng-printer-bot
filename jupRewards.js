@@ -110,7 +110,7 @@ const main = async () => {
   });
 
   // setInterval(async () => {
-  cron.schedule("*/5 * * * *", async () => {
+  cron.schedule("*/10 * * * *", async () => {
     try {
       console.log("starting swap");
       const quantity = await quantityToSwap(
