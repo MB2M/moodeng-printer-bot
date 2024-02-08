@@ -127,7 +127,7 @@ const main = async () => {
     }
   });
   // }, 300000);
-  cron.schedule("*/10 * * * *", async () => {
+  cron.schedule("30 */11 * * * *", async () => {
     try {
       const quantityToTransfer = await getBalance(
         connection,
