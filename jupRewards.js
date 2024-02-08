@@ -109,8 +109,8 @@ const main = async () => {
     }
   });
 
-  setInterval(async () => {
-    // cron.schedule("*/90 * * * * *", async () => {
+  // setInterval(async () => {
+  cron.schedule("*/5 * * * *", async () => {
     try {
       console.log("starting swap");
       const quantity = await quantityToSwap(
@@ -125,14 +125,15 @@ const main = async () => {
     } catch (err) {
       console.error(err);
     }
-    // });
-  }, 300000);
-  cron.schedule("*/5 * * * *", async () => {
+  });
+  // }, 300000);
+  cron.schedule("*/10 * * * *", async () => {
     try {
       const quantityToTransfer = await getBalance(
         connection,
         jupRewardRewardTokenAccount.address,
       );
+      console.log("quantityToTransfer:", quantityToTransfer);
       if (quantityToTransfer > 0) {
         await createAllTransferTxs(
           connection,

@@ -9,8 +9,7 @@ import { decodeTransferInstructionUnchecked } from "@solana/spl-token";
 
 export const sendTxs = async (connection, jupRewards, redisClient) => {
   const txs = JSON.parse(await redisClient.get("txs"));
-
-  const chunkSize = 50;
+  const chunkSize = 15;
 
   let done = false;
   let chunkTxs = [];
