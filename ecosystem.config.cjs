@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "app",
       script: "./jupRewards.js",
-      instances: "max",
+      instances: "1",
       env: {
         NODE_ENV: "development",
       },
