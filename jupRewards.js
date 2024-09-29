@@ -36,10 +36,10 @@ const quantityToSwap = async (connection, tokenAccount, mintAddress) => {
 const main = async () => {
   await client.connect();
 
-  const mintAddress = "88y9TubbeK6faabYWqf4RxSnRcmhXNYgAA8LnDoKgpUG";
-  const poolAddress = "Enrfx2t4aFwUod4hv5eh9LNXbotQLo1FiKhbxN9Uhv4P";
-  const rewardAddress = "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN";
-  const teamAddress = "8esYo5EmeLgbn1RNkwH12CYSRc6tyBhNPKNiSBdg6Y9P";
+  const mintAddress = "";
+  const poolAddress = "";
+  const rewardAddress = "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY";
+  const teamAddress = "CUH9XDZNmXD8CGuhKznENCrA9TWVM4wKzWDmYxHFdTEG";
 
   const jupRewards = Keypair.fromSecretKey(
     new Uint8Array(JSON.parse(process.env.JUPREWARDS)),
@@ -120,7 +120,13 @@ const main = async () => {
       );
       console.log("quantityToSwap:", quantity);
       if (quantity > 0) {
-        await swap(connection, jupRewards, mintAddress, quantity);
+        await swap(
+          connection,
+          jupRewards,
+          mintAddress,
+          quantity,
+          rewardAddress,
+        );
       }
     } catch (err) {
       console.error(err);

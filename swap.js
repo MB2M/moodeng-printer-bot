@@ -1,7 +1,13 @@
 import { VersionedTransaction } from "@solana/web3.js";
 import { sleep } from "./sleep.js";
 
-export const swap = async (connection, jupRewards, mintAddress, quantity) => {
+export const swap = async (
+  connection,
+  jupRewards,
+  mintAddress,
+  quantity,
+  toAddress,
+) => {
   // const balance = await getBalance(connection, tokenAccount);
   // await connection.getTokenAccountBalance(
   //   new PublicKey("J1pS5cDFxPSdS37mZc4gxEEQWTiQ2wzNXcroUU6hPj3k"),
@@ -10,7 +16,7 @@ export const swap = async (connection, jupRewards, mintAddress, quantity) => {
   // SWAP
   const quoteResponse = await (
     await fetch(
-      `https://quote-api.jup.ag/v6/quote?inputMint=${mintAddress}&outputMint=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN&amount=${quantity}&slippageBps=3000`,
+      `https://quote-api.jup.ag/v6/quote?inputMint=${mintAddress}&outputMint=${toAddress}amount=${quantity}&slippageBps=3000`,
     )
   ).json();
 
