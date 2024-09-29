@@ -36,8 +36,8 @@ const quantityToSwap = async (connection, tokenAccount, mintAddress) => {
 const main = async () => {
   await client.connect();
 
-  const mintAddress = "";
-  const poolAddress = "";
+  const mintAddress = "4jCbZXitYenUZsCHvzbMh8hehFMNMj2QSjUXGV4kiAyb";
+  const poolAddress = "GSzoYVaB2txnMTkzM7GdNjd57QNxdLF58bp88qUJFkNr";
   const rewardAddress = "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY";
   const teamAddress = "CUH9XDZNmXD8CGuhKznENCrA9TWVM4wKzWDmYxHFdTEG";
 
