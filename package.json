@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"start": "pm2-runtime start ecosystem.config.js --env production"
+		"start": "pm2-runtime start ecosystem.config.cjs --env production"
 	},
 	"type": "module",
 	"dependencies": {
