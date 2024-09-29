@@ -1,1 +1,1 @@
-web: node jupRewards.js
+web: npm run start
