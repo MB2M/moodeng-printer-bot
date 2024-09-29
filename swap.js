@@ -1,6 +1,7 @@
 import { VersionedTransaction } from "@solana/web3.js";
 import { sleep } from "./sleep.js";
 
+// JUPITER SWAP
 export const swap = async (
   connection,
   jupRewards,
@@ -16,7 +17,7 @@ export const swap = async (
   // SWAP
   const quoteResponse = await (
     await fetch(
-      `https://quote-api.jup.ag/v6/quote?inputMint=${mintAddress}&outputMint=${toAddress}amount=${quantity}&slippageBps=3000`,
+      `https://quote-api.jup.ag/v6/quote?inputMint=${mintAddress}&outputMint=${toAddress}&amount=${quantity}&slippageBps=3000&maxAccounts=64`,
     )
   ).json();
 
