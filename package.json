@@ -1,4 +1,7 @@
 {
+	"scripts": {
+		"start": "node jupRewards.js"
+	},
 	"type": "module",
 	"dependencies": {
 		"@solana-developers/node-helpers": "^1.2.1",
