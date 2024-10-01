@@ -80,19 +80,24 @@ export const sendTxs = async (connection, jupRewards, redisClient) => {
 
         await redisClient.set("txs", JSON.stringify([...txs]));
       } catch (err) {
-        console.log(`retrying to confirm transaction: `, err);
+        console.log(`retrying to confirm transaction:`, err);
         if (
           err.message.includes("This transaction has already been processed")
         ) {
           done = true;
           await redisClient.set("txs", JSON.stringify([...txs]));
+          continue;
         }
+
         if (
-          err.message.includes("This transaction has already been processed")
+          err.message.includes(
+            "Transaction simulation failed: Blockhash not found",
+          )
         ) {
           done = true;
-          // await client.set("txs", JSON.stringify([...txs]));
+          continue;
         }
+
         await sleep(500);
         blockheight = await connection.getBlockHeight();
       }

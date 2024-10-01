@@ -21,7 +21,7 @@ export const swap = async (
     )
   ).json();
 
-  console.log("quoteResponse:", quoteResponse);
+  // console.log("quoteResponse:", quoteResponse);
 
   if (quoteResponse.error) return;
 

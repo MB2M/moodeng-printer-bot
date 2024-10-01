@@ -14,6 +14,7 @@ import { swap } from "./swap.js";
 import { getBalance } from "./getBalance.js";
 import { getSupply } from "./getSupply.js";
 import { createAllTransferTxs } from "./transfer.js";
+import { createAllTokenAccounts } from "./tokenAccounts.js";
 
 dotenv.config();
 
@@ -22,7 +23,7 @@ const quantityToSwap = async (connection, tokenAccount, mintAddress) => {
   const totalSupply = await getSupply(connection, mintAddress);
 
   const min = 0.001;
-  const max = 0.004;
+  const max = 0.002;
 
   console.log("balance: ", balance);
   console.log("totalSupply: ", totalSupply);
@@ -36,8 +37,8 @@ const quantityToSwap = async (connection, tokenAccount, mintAddress) => {
 const main = async () => {
   await client.connect();
 
-  const mintAddress = "4jCbZXitYenUZsCHvzbMh8hehFMNMj2QSjUXGV4kiAyb";
-  const poolAddress = "GSzoYVaB2txnMTkzM7GdNjd57QNxdLF58bp88qUJFkNr";
+  const mintAddress = "GAHf6z3chHyqXp8GPh1hPbXhZCGk39Q92qCYC47Smo8M";
+  const poolAddress = "ANESLFFYUcKbHKmNViwqb6MMUXRtnNdPKLNNitv6Azbv";
   const rewardAddress = "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY";
   const teamAddress = "CUH9XDZNmXD8CGuhKznENCrA9TWVM4wKzWDmYxHFdTEG";
 
@@ -110,7 +111,7 @@ const main = async () => {
   });
 
   // setInterval(async () => {
-  cron.schedule("*/10 * * * *", async () => {
+  cron.schedule("0 * * * *", async () => {
     try {
       console.log("starting swap");
       const quantity = await quantityToSwap(
@@ -133,7 +134,23 @@ const main = async () => {
     }
   });
   // }, 300000);
-  cron.schedule("30 */11 * * * *", async () => {
+
+  cron.schedule("*/2 * * * *", async () => {
+    await createAllTokenAccounts(
+      connection,
+      [
+        poolTokenAccount.address.toString(),
+        jupRewardPrinterTokenAccount.address.toString(),
+      ],
+      jupRewards,
+      jupRewardRewardTokenAccount,
+      mintAddress,
+      rewardAddress,
+      client,
+    );
+  });
+
+  cron.schedule("10 * * * *", async () => {
     try {
       const quantityToTransfer = await getBalance(
         connection,
